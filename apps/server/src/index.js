@@ -3,14 +3,17 @@ import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
+import connectDB from "./config/database.js";
 
 dotenv.config();
 
 const app = express();
 
+connectDB();
+
 app.use(helmet());
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL,   
     credentials: true,
 }));
 
