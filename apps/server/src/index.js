@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/database.js";
 import errorHandler from "./middleware/errorHandler.js";
 import logger from "./config/logger.js";
+import verseRoutes from "./routes/verse.routes.js";
 
 
 dotenv.config();
