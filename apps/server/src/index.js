@@ -5,6 +5,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./config/database.js";
 import errorHandler from "./middleware/errorHandler.js";
+import logger from "./config/logger.js";
 
 
 dotenv.config();
@@ -33,5 +34,5 @@ app.get('/health', (req, res) => {
 
   const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  logger.info(`Server running on port ${PORT}`);
 });
