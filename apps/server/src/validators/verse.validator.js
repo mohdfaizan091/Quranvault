@@ -3,7 +3,6 @@ import { z } from 'zod';
 export const saveVerseSchema = z.object({
   surah: z.number().min(1).max(114),
   ayat: z.number().min(1),
-  translation: z.string().min(1),
   personalLesson: z.string().optional(),
   tags: z.array(z.string()).optional()
 });
