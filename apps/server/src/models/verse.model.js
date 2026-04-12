@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 const verseSchema = new mongoose.Schema({
   userId: { type: String, required: true, index: true },
   surah: { type: Number, required: true },
+  surahName: { type: String },
+  surahNameArabic: { type: String },
   ayat: { type: Number, required: true },
   translation: { type: String, required: true },
   aiContext: {

@@ -1,8 +1,21 @@
 import * as verseService from '../services/verse.service.js';
+import { fetchVerse } from '../services/quran.service.js';
 
 export const saveVerse = async (req, res, next) => {
   try {
-    const verse = await verseService.createVerse(req.userId, req.body);
+    const { surah, ayat, personalLesson, tags } = req.body;
+    
+    const quranData = await fetchVerse(surah, ayat);
+    
+    const verse = await verseService.createVerse(req.userId, {
+      surah,
+      ayat,
+      translation: quranData.translation,
+      surahName: quranData.surahName,
+      personalLesson,
+      tags
+    });
+    
     res.status(201).json({ success: true, data: verse });
   } catch (error) {
     next(error);
