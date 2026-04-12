@@ -4,6 +4,8 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./config/database.js";
+import errorHandler from "./middleware/errorHandler.js";
+
 
 dotenv.config();
 
@@ -18,7 +20,7 @@ app.use(cors({
 }));
 
 app.use(morgan("dev"));
-
+app.use(errorHandler);
 // helth route
 app.get('/health', (req, res) => {
     res.json({ status: 'ok' });
